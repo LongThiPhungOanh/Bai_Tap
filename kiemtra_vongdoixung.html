@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var s = prompt("nhập: ");
+    var arr1 = s.split('');
+    var result = false;
+   function isPalindrome(arr) {
+       console.log(arr);
+        if(arr.length == 1 || arr.length == 0){
+            console.log(-1);
+            return true;
+        }else if(arr.length > 1) {
+            if(arr[0] === arr[arr.length-1]){
+                arr.pop();
+                arr.shift();
+            return isPalindrome(arr);
+            }else {
+                return false;
+            }
+        }
+    }
+      alert(isPalindrome(arr1))
+</script>
+</body>
+</html>
