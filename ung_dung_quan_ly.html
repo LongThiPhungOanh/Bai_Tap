@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href=".idea/quan_ly_ung_dung.css">
+</head>
+<body>
+<table>
+<h4>Add New Product</h4>
+    <input id="theID" style="height: 20px" placeholder="New Product" type="text">
+   <button onclick="Product1()"
+    style="height: 27px">Add</button>
+
+    </table>
+<h4>Display All Product</h4>
+<div id="demo"></div>
+<script>
+var total = ["Sony Xperia", "Samsung Galaxy", "Nokia 6", "Xiaomi Redmi Note 4",
+    "Apple iPhone 6S", "Xiaomi Mi 5s Plus", "Apple iPhone 8 Plus", "Fujitsu F-04E", "Oppo A71"
+]
+show()
+function show(){
+    let str = "<table border='1 solid white'> ";
+    for (let i = 0; i < total.length; i++) {
+        str +=  "<tr> <td  style='width: 300px'>" + total[i] + "</td>"
+        str += "<td><button onclick='Product2("+i+")'>Edit</button></td> " +
+            "<td><button onclick='Product3("+i+")'>Delete</button></td> </tr>"
+    }
+    str += "</table>"
+    document.getElementById("demo").innerHTML = str
+}
+function Product1(){
+    let n = document.getElementById('theID').value
+    total.push(n);
+    alert("bạn thêm thành công");
+    show();
+}
+function Product2(index){
+    let a = prompt(total[index]);
+ total.splice(index, 1 , a)
+    alert("bạn thêm thành công")
+    show()
+}
+function Product3(index){
+total.splice(index,1)
+    show()
+    alert("bạn xóa thành công")
+}
+</script>
+</body>
+</html>
