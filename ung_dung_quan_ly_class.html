@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href=".idea/quan_ly_ung_dung.css">
+</head>
+<body>
+<h4>Add New Product</h4>
+<input id="theID" style="height: 20px" placeholder="New Product" type="text">
+<button onclick="add()"
+        style="height: 27px">Add</button>
+<h4>Display All Product</h4>
+<div id="demo"></div>
+<script>
+    class Products {
+        constructor() {
+            this.products = [];
+        }
+
+        addProduct(product) {
+            this.products.push(product);
+        }
+
+        showProducts() {
+            let str = "<table border='1 solid white'> ";
+            for (let i = 0; i < this.products.length; i++) {
+                str += "<tr> <td  style='width: 300px'>" + this.products[i] + "</td>"
+                str += "<td><button onclick='productList.editProduct.bind(productList)(" + i + ")'>Edit</button></td> " +
+                    "<td><button onclick='productList.deleteProduct.bind(productList)(" + i + ")'>Delete</button></td> </tr>"
+            }
+            str += "</table>"
+            document.getElementById("demo").innerHTML = str
+        }
+        deleteProduct(index) {
+            if (index >= 0 && index < this.products.length) {
+                this.products.splice(index, 1);
+               alert(`Sản phẩm tại vị trí ${index + 1} đã được xóa.`);
+            } else {
+                alert("Vị trí sản phẩm không hợp lệ.");
+            }
+            this.showProducts()
+        }
+        editProduct(index) {
+            let newProduct = prompt("");
+            if (index >= 0 && index < this.products.length) {
+                this.products[index] = newProduct;
+                alert(`Sản phẩm tại vị trí ${index + 1} đã được sửa.`);
+            } else {
+                alert("Vị trí sản phẩm không hợp lệ.");
+
+            }
+                 this.showProducts()
+        }
+    }
+
+    const productList = new Products();
+    productList.addProduct("Sony Xperia");
+    productList.addProduct("Samsung Galaxy");
+    productList.addProduct("Nokia 6");
+    productList.addProduct("Xiaomi Redmi Note 4");
+    productList.addProduct("Apple iPhone 6S");
+    productList.addProduct("Xiaomi Mi 5s Plus");
+    productList.addProduct("Apple iPhone 8 Plus");
+    productList.addProduct("Fujitsu F-04E");
+    productList.addProduct("Oppo A71");
+    function add(){
+        let name = document.getElementById('theID').value
+        productList.addProduct(name)
+        productList.showProducts()
+
+    }
+    productList.showProducts();
+
+</script>
+</body>
+</html>
